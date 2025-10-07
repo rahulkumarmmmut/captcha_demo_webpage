@@ -115,9 +115,11 @@ app.use((err, req, res, next) => {
 });
 
 // --- start server ---
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`Using Cloudflare Turnstile site key:   ${TURNSTILE_SITEKEY}`);
-  console.log(`Using Cloudflare Turnstile secret key: ${TURNSTILE_SECRET}`);
-  console.log(`Final token will be logged on each POST /verify under: "Final Turnstile token (sent to siteverify)"`);
-});
+// --- start server ---
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running locally on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
