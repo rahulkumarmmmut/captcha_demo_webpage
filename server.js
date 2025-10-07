@@ -15,8 +15,8 @@ const __dirname = path.dirname(__filename);
 // - This sitekey forces a visible, manual challenge.
 // - For local testing with test sitekeys, use the test secret below.
 //   (In production, replace both with your real keys.)
-const TURNSTILE_SITEKEY = '3x00000000000000000000FF';
-const TURNSTILE_SECRET  = '1x0000000000000000000000000000000AA'; // test secret: always passes
+const TURNSTILE_SITEKEY = '0x4AAAAAAB5KBEu12bu0ZukL;
+const TURNSTILE_SECRET  = '0x4AAAAAAB5KBHgHy-0w_dSi_5uPPNDu-9o'; 
 
 app.set('trust proxy', true);
 
