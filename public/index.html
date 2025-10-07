@@ -21,26 +21,18 @@
     </div>
     <br />
 
-    <!-- Interactive (manual) Turnstile widget -->
-    <div
-      class="cf-turnstile"
-      data-sitekey="0x4AAAAAAB5KBEu12bu0ZukL"
-      data-callback="onCaptchaSuccess">
-    </div>
+    <div class="cf-turnstile"
+         data-sitekey="0x4AAAAAAB5KBEu12bu0ZukL"  <!-- EXACT same widget’s sitekey -->
+         data-callback="onCaptchaSuccess"></div>
 
-    <!-- Hidden field to send token to the server -->
     <input type="hidden" id="cf-token" name="cf-turnstile-response" />
-
     <br />
     <button type="submit">Log in</button>
   </form>
 
-  <script src="/script.js"></script>
   <script>
-    // Called by Turnstile when the widget is solved (manual click)
     function onCaptchaSuccess(token) {
       document.getElementById('cf-token').value = token;
-      // Optional: client-side visibility
       console.log('[Client] Turnstile token:', token);
     }
   </script>
