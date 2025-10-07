@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cloudflare Turnstile Demo</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <h1>Login</h1>
+
+  <form id="login-form" action="/verify" method="POST">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+    </div>
+    <br />
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <br />
+
+    <!-- Interactive (manual) Turnstile widget -->
+    <div
+      class="cf-turnstile"
+      data-sitekey="3x00000000000000000000FF"
+      data-callback="onCaptchaSuccess">
+    </div>
+
+    <!-- Hidden field to send token to the server -->
+    <input type="hidden" id="cf-token" name="cf-turnstile-response" />
+
+    <br />
+    <button type="submit">Log in</button>
+  </form>
+
+  <script src="/script.js"></script>
+  <script>
+    // Called by Turnstile when the widget is solved (manual click)
+    function onCaptchaSuccess(token) {
+      document.getElementById('cf-token').value = token;
+      // Optional: client-side visibility
+      console.log('[Client] Turnstile token:', token);
+    }
+  </script>
+</body>
+</html>
